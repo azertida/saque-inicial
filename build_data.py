@@ -109,8 +109,8 @@ def parse_openfootball(data, name, tz=None):
 
 # Tournois à fichier fixe (offset UTC explicite dans les heures)
 OPENFOOTBALL_FIXED = [
-    ("World Cup 2026", "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json"),
-    ("Euro 2028",      "https://raw.githubusercontent.com/openfootball/euro.json/master/2028/euro.json"),
+    ("Mundial 2026",   "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json"),
+    ("Eurocopa 2028",  "https://raw.githubusercontent.com/openfootball/euro.json/master/2028/euro.json"),
 ]
 
 # Ligues club (heures locales -> timezone) : on prend la saison la plus récente disponible
