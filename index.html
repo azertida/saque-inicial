@@ -130,7 +130,7 @@
     <button class="filter" data-range="all">Todos</button>
   </div>
 
-  <div id="agenda"><div class="empty">Loading…</div></div>
+  <div id="agenda"><div class="empty">Cargando…</div></div>
 
 </div>
 
@@ -145,7 +145,7 @@ let rangeFilter = localStorage.getItem(LS.range) || "upcoming";
 const $ = id => document.getElementById(id);
 
 async function loadData(){
-  $("agenda").innerHTML = '<div class="empty">Loading…</div>';
+  $("agenda").innerHTML = '<div class="empty">Cargando…</div>';
   try{
     const res = await fetch("./matches.json?t=" + Date.now(), {cache:"no-store"});
     if(!res.ok) throw new Error("HTTP " + res.status);
@@ -242,7 +242,7 @@ function renderAgenda(){
   rows.sort((a,b) => a.d - b.d);
 
   if(!rows.length){
-    $("agenda").innerHTML = `<div class="empty"><strong>Nothing to show</strong>
+    $("agenda").innerHTML = `<div class="empty"><strong>Nada que mostrar</strong>
       No hay partidos para este filtro. Prueba “Todos”.</div>`;
     return;
   }
