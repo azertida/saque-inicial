@@ -383,6 +383,7 @@ WIKI_SOURCES = [
     ("UEFA Champions League", "UEFA Champions League", "Football"),
     ("UEFA Europa League",    "UEFA Europa League",    "Football"),
     ("UEFA Nations League",   "UEFA Nations League",   "Football"),
+    ("UEFA Conference League","UEFA Conference League","Football"),
     ("Copa del Rey",          "Copa del Rey",          "Football"),
 ]
 
