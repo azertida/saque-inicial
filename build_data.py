@@ -467,6 +467,11 @@ def collect_wiki_football(name, page_base, label):
                  f"{s} {page_base} league phase",
                  f"{s} {page_base} knockout phase",
                  f"{s} {page_base}"]
+    elif page_base == "Supercopa de España":
+        # Tournoi de janvier : la page Wikipédia est nommée par ANNÉE civile
+        # ("2027 Supercopa de España"), pas par saison.
+        y = datetime.now(timezone.utc).year
+        pages = [f"{y+1} {page_base}", f"{y} {page_base}"]
     elif page_base == "Copa del Rey":
         # Coupe à élimination directe : une seule page par saison porte tous les tours.
         pages = [f"{s} {page_base}"]
@@ -527,6 +532,7 @@ WIKI_SOURCES = [
     ("UEFA Nations League",   "UEFA Nations League",   "Football"),
     ("UEFA Conference League","UEFA Conference League","Football"),
     ("Copa del Rey",          "Copa del Rey",          "Football"),
+    ("Supercopa de España",   "Supercopa de España",   "Football"),
 ]
 
 # ---------------------------------------------------------------- main
