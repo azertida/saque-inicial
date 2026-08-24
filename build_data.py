@@ -250,8 +250,25 @@ def parse_openfootball_txt(text, competition, tz_name="Europe/Madrid"):
     return out
 
 
+# Calendriers maintenus dans ce dépôt, quand openfootball ne publie pas.
+# Format openfootball texte -> lus par le même parseur.
+LOCAL_TXT = {
+    ("es.2", "2026-27"): "data/2026-27/2-liga2.txt",
+}
+
 def _openfootball_txt_season(name, code, tz, season):
-    """Lit la source texte pour UNE saison donnée (repli quand le JSON manque)."""
+    """Lit la source texte pour UNE saison donnée (repli quand le JSON manque).
+
+    Priorité au fichier local du dépôt s'il existe pour cette saison : il permet
+    de ne pas dépendre du calendrier de publication d'openfootball.
+    """
+    local = LOCAL_TXT.get((code, season))
+    if local:
+        try:
+            with open(local, encoding="utf-8") as f:
+                return _rows_from_txt(f.read(), name, code, tz)
+        except FileNotFoundError:
+            pass
     repo, fname = OPENFOOTBALL_TXT[code]
     url = f"https://raw.githubusercontent.com/openfootball/{repo}/master/{season}/{fname}"
     try:
@@ -260,6 +277,9 @@ def _openfootball_txt_season(name, code, tz, season):
         if e.code == 404:
             return []
         raise
+    return _rows_from_txt(txt, name, code, tz)
+
+def _rows_from_txt(txt, name, code, tz):
     rows = []
     for m in parse_openfootball_txt(txt, name, tz):
         start, tbd = parse_openfootball_time(m["date"], m["time_local"], tz)
