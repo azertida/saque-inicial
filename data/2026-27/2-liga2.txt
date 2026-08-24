@@ -1,0 +1,174 @@
+= Spain Segunda División 2026/27
+
+# Calendrier partiel : rencontres du Real Oviedo uniquement.
+# Source : calendrier officiel de la journée (relevé manuellement).
+# Les horaires ne sont pas encore publiés -> seules les dates figurent.
+
+
+▪ Matchday 1
+  Sat Aug 15 2026
+    Real Oviedo  0-0  Granada CF
+
+▪ Matchday 2
+  Sat Aug 22 2026
+    Real Oviedo  0-1  CD Leganés
+
+▪ Matchday 3
+  Sat Aug 29 2026
+    Albacete Balompié v Real Oviedo
+
+▪ Matchday 4
+  Sun Sep 6 2026
+    Real Oviedo v Burgos CF
+
+▪ Matchday 5
+  Sun Sep 13 2026
+    Real Valladolid CF v Real Oviedo
+
+▪ Matchday 6
+  Sun Sep 20 2026
+    CE Sabadell FC v Real Oviedo
+
+▪ Matchday 7
+  Sun Sep 27 2026
+    Real Oviedo v Real Sporting de Gijón
+
+▪ Matchday 8
+  Sun Oct 4 2026
+    CD Eldense v Real Oviedo
+
+▪ Matchday 9
+  Sun Oct 11 2026
+    Real Oviedo v SD Eibar
+
+▪ Matchday 10
+  Sun Oct 18 2026
+    AD Ceuta FC v Real Oviedo
+
+▪ Matchday 11
+  Sun Oct 25 2026
+    UD Almería v Real Oviedo
+
+▪ Matchday 12
+  Sun Nov 1 2026
+    Real Oviedo v UD Las Palmas
+
+▪ Matchday 13
+  Sun Nov 8 2026
+    Cádiz CF v Real Oviedo
+
+▪ Matchday 14
+  Sun Nov 15 2026
+    Real Oviedo v Girona FC
+
+▪ Matchday 15
+  Sun Nov 22 2026
+    Córdoba CF v Real Oviedo
+
+▪ Matchday 16
+  Sun Nov 29 2026
+    Real Oviedo v RC Celta Fortuna
+
+▪ Matchday 17
+  Sun Dec 6 2026
+    FC Andorra v Real Oviedo
+
+▪ Matchday 18
+  Sun Dec 13 2026
+    Real Oviedo v Real Sociedad de Fútbol B
+
+▪ Matchday 19
+  Sun Dec 20 2026
+    CD Tenerife v Real Oviedo
+
+▪ Matchday 20
+  Sun Jan 3 2027
+    Real Oviedo v CD Castellón
+
+▪ Matchday 21
+  Sun Jan 10 2027
+    RCD Mallorca v Real Oviedo
+
+▪ Matchday 22
+  Sun Jan 17 2027
+    Real Oviedo v UD Almería
+
+▪ Matchday 23
+  Sun Jan 24 2027
+    Girona FC v Real Oviedo
+
+▪ Matchday 24
+  Sun Jan 31 2027
+    Real Oviedo v Cádiz CF
+
+▪ Matchday 25
+  Sun Feb 7 2027
+    CD Leganés v Real Oviedo
+
+▪ Matchday 26
+  Sun Feb 14 2027
+    Real Oviedo v CE Sabadell FC
+
+▪ Matchday 27
+  Sun Feb 21 2027
+    SD Eibar v Real Oviedo
+
+▪ Matchday 28
+  Sun Feb 28 2027
+    Real Oviedo v CD Tenerife
+
+▪ Matchday 29
+  Sun Mar 7 2027
+    RC Celta Fortuna v Real Oviedo
+
+▪ Matchday 30
+  Sun Mar 14 2027
+    Real Oviedo v Córdoba CF
+
+▪ Matchday 31
+  Sun Mar 21 2027
+    UD Las Palmas v Real Oviedo
+
+▪ Matchday 32
+  Sun Mar 28 2027
+    Real Oviedo v Real Valladolid CF
+
+▪ Matchday 33
+  Sun Apr 4 2027
+    Burgos CF v Real Oviedo
+
+▪ Matchday 34
+  Sun Apr 11 2027
+    Real Oviedo v CD Eldense
+
+▪ Matchday 35
+  Sun Apr 18 2027
+    Granada CF v Real Oviedo
+
+▪ Matchday 36
+  Sun Apr 25 2027
+    Real Sporting de Gijón v Real Oviedo
+
+▪ Matchday 37
+  Sun May 2 2027
+    Real Oviedo v Albacete Balompié
+
+▪ Matchday 38
+  Sun May 9 2027
+    Real Sociedad de Fútbol B v Real Oviedo
+
+▪ Matchday 39
+  Sun May 16 2027
+    Real Oviedo v AD Ceuta FC
+
+▪ Matchday 40
+  Sun May 23 2027
+    Real Oviedo v RCD Mallorca
+
+▪ Matchday 41
+  Sun May 30 2027
+    CD Castellón v Real Oviedo
+
+▪ Matchday 42
+  Sun Jun 6 2027
+    Real Oviedo v FC Andorra
