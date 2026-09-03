@@ -234,8 +234,8 @@ function inRange(d){
 }
 
 /* ---- équipes suivies ---- */
-// Real Oviedo
-const FAVS = ["Oviedo"];
+// Real Oviedo + selección española
+const FAVS = ["Oviedo", "Spain", "España"];   // NB : jamais "Espan" (RCD Espanyol !)
 const isFav = n => { const s = (n||"").toLowerCase();
   return FAVS.some(f => s.includes(f.toLowerCase())); };
 const teamHtml = n => isFav(n) ? `<span class="fav">${esc(n)}</span>` : esc(n);
