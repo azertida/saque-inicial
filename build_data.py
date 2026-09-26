@@ -533,19 +533,27 @@ def collect_wiki_football(name, page_base, label):
                  f"{s} {page_base} knockout phase",
                  f"{s} {page_base}"]
     out, seen, pages_ok = [], set(), []
+    diag = {"blocs": 0, "sans_equipe": 0, "sans_date": 0, "doublons": 0}
     for page in pages:
         wt = wiki_wikitext(page)
         if not wt:
             continue
         pages_ok.append(page)
-        for body in _fb_extract(wt):
+        blocs = _fb_extract(wt)
+        diag["blocs"] += len(blocs)
+        for body in blocs:
             f = _fb_fields(body)
             date = _fb_date(f.get("date", ""))
             home, away = _fb_team(f.get("team1", "")), _fb_team(f.get("team2", ""))
-            if not date or not home or not away:
+            if not home or not away:
+                diag["sans_equipe"] += 1
+                continue
+            if not date:
+                diag["sans_date"] += 1
                 continue
             key = (date, home, away)
             if key in seen:
+                diag["doublons"] += 1
                 continue
             seen.add(key)
             start = combine_date_time_cet(date, _fb_time(f.get("time", "")))
@@ -561,7 +569,7 @@ def collect_wiki_football(name, page_base, label):
                 "venue": _fb_team(f.get("stadium", "")) or None,
             })
         time.sleep(0.3)
-    return out, pages_ok
+    return out, pages_ok, diag
 
 def combine_date_time_cet(date_iso, time_str):
     """UEFA lists kick-off times in CET/CEST -> store as UTC."""
@@ -613,11 +621,17 @@ def main():
 
     for name, page_base, label in WIKI_SOURCES:
         try:
-            rows, pages_ok = collect_wiki_football(name, page_base, label)
+            rows, pages_ok, diag = collect_wiki_football(name, page_base, label)
             matches += rows
             sources.append({"name": name, "sport": label, "ok": True,
                             "count": len(rows), "season": wiki_season()})
-            print(f"[ok] {name}: {len(rows)} (pages: {', '.join(pages_ok) or 'none'})")
+            # Un 0 est ambigu : ces compteurs disent si la page est vide
+            # (dormante) ou si le parseur n'a pas su la lire (à corriger).
+            detail = (f"{len(pages_ok)} page(s), {diag['blocs']} bloc(s)"
+                      f", écartés: {diag['sans_equipe']} sans équipe"
+                      f" / {diag['sans_date']} sans date"
+                      f" / {diag['doublons']} doublons")
+            print(f"[ok] {name}: {len(rows)}  [{detail}]")
         except Exception as e:
             sources.append({"name": name, "sport": label, "ok": False, "error": str(e)})
             print(f"[!!] {name}: {e}", file=sys.stderr)
