@@ -393,17 +393,22 @@ def _fb_extract(wikitext):
         if not hits:
             break
         idx = min(hits)
-        depth, j = 0, idx
-        while j < len(wikitext):
+        # Un bloc de match ne dépasse jamais quelques milliers de caractères.
+        # Sans cette borne, des accolades déséquilibrées font parcourir tout le
+        # reste de la page : le bloc fautif ferait alors perdre TOUS les matchs
+        # suivants. Ici il n'en coûte qu'un, et l'analyse reprend juste après.
+        fin = min(len(wikitext), idx + 8000)
+        depth, j, ferme = 0, idx, False
+        while j < fin:
             if wikitext[j:j+2] == "{{":
                 depth += 1; j += 2
             elif wikitext[j:j+2] == "}}":
                 depth -= 1; j += 2
                 if depth == 0:
-                    out.append(wikitext[idx:j]); break
+                    out.append(wikitext[idx:j]); ferme = True; break
             else:
                 j += 1
-        i = j if j > idx else idx + 2
+        i = j if ferme else idx + 2
     return out
 
 def _fb_fields(body):
