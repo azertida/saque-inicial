@@ -455,20 +455,48 @@ def _fb_time(text):
     m = re.search(r"(\d{1,2})[:.](\d{2})", text)
     return f"{int(m.group(1)):02d}:{m.group(2)}" if m else None
 
+
+# Codes pays des modeles {{fb|ESP}} / {{fb-rt|ITA}} (selections nationales).
+# Les matchs de clubs utilisent des liens [[...]] ; ces codes ne servent
+# qu'aux competitions entre nations (Ligue des nations, qualifications...).
+FB_CODES = {
+    "ALB": "Albania", "AND": "Andorra", "ARM": "Armenia", "AUT": "Austria",
+    "AZE": "Azerbaijan", "BLR": "Belarus", "BEL": "Belgium",
+    "BIH": "Bosnia and Herzegovina", "BUL": "Bulgaria", "CRO": "Croatia",
+    "CYP": "Cyprus", "CZE": "Czech Republic", "DEN": "Denmark",
+    "ENG": "England", "EST": "Estonia", "FRO": "Faroe Islands",
+    "FIN": "Finland", "FRA": "France", "GEO": "Georgia", "GER": "Germany",
+    "GIB": "Gibraltar", "GRE": "Greece", "HUN": "Hungary", "ISL": "Iceland",
+    "IRL": "Republic of Ireland", "ISR": "Israel", "ITA": "Italy",
+    "KAZ": "Kazakhstan", "KVX": "Kosovo", "KOS": "Kosovo", "LVA": "Latvia",
+    "LIE": "Liechtenstein", "LTU": "Lithuania", "LUX": "Luxembourg",
+    "MLT": "Malta", "MDA": "Moldova", "MNE": "Montenegro",
+    "NED": "Netherlands", "MKD": "North Macedonia", "NIR": "Northern Ireland",
+    "NOR": "Norway", "POL": "Poland", "POR": "Portugal", "ROU": "Romania",
+    "RUS": "Russia", "SMR": "San Marino", "SCO": "Scotland", "SRB": "Serbia",
+    "SVK": "Slovakia", "SVN": "Slovenia", "ESP": "Spain", "SWE": "Sweden",
+    "SUI": "Switzerland", "TUR": "Turkey", "UKR": "Ukraine", "WAL": "Wales",
+}
+
 def _fb_team(text):
     if not text:
         return None
-    text = text.replace("'''", "")
-    text = re.sub(r"\{\{\s*(?:flagicon|fb|fbicon|fbaicon)[^}]*\}\}", "", text, flags=re.I)
-    m = re.search(r"\[\[[^\]|]+\|([^\]]+)\]\]", text)   # [[Arsenal F.C.|Arsenal]]
+    t = text.replace("'''", "")
+    # 1) lien wiki d abord : ainsi sont ecrits les clubs, meme avec un drapeau
+    m = re.search(r"\[\[[^\]|]+\|([^\]]+)\]\]", t)
     if m:
         return m.group(1).strip()
-    m = re.search(r"\[\[([^\]|]+)\]\]", text)            # [[Arsenal]]
+    m = re.search(r"\[\[([^\]|]+)\]\]", t)
     if m:
         return m.group(1).strip()
-    text = re.sub(r"\{\{[^}]*\}\}", "", text)
-    text = re.sub(r"<[^>]+>", "", text)
-    return text.strip() or None
+    # 2) sinon code pays : {{fb|BEL}}, {{fb-rt|ITA}}, {{fbw|GER}}
+    m = re.search(r"\{\{\s*fb[a-z-]*\s*\|\s*([A-Za-z]{3})\s*(?:\||\}\})", t, flags=re.I)
+    if m and m.group(1).upper() in FB_CODES:
+        return FB_CODES[m.group(1).upper()]
+    # 3) repli : nettoyage
+    t = re.sub(r"\{\{[^}]*\}\}", "", t)
+    t = re.sub(r"<[^>]+>", "", t)
+    return t.strip() or None
 
 def _fb_score(text):
     if not text:
