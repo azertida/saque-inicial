@@ -385,7 +385,11 @@ def _fb_extract(wikitext):
     """Every {{Football box ...}} / {{Footballbox ...}}, brace-matched."""
     out, low, i = [], wikitext.lower(), 0
     while True:
-        hits = [h for h in (low.find("{{football box", i), low.find("{{footballbox", i)) if h != -1]
+        # Wikipédia écrit désormais certains matchs via un module Lua :
+        # {{#invoke:Football box|main|...}} au lieu de {{Football box|...}}.
+        hits = [h for h in (low.find("{{football box", i),
+                            low.find("{{footballbox", i),
+                            low.find("{{#invoke:football box", i)) if h != -1]
         if not hits:
             break
         idx = min(hits)
